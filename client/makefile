@@ -1,5 +1,6 @@
 CC=g++
-CFLAGS=-g
+CFLAGS=-g  
+# -std=c++11
 LDFLAGS=-lpthread
 
 main: main.o SLog.o MessagePackage.o SocketWraper.o ConnectionManager.o StreamBuffer.o 
@@ -20,8 +21,8 @@ StreamBuffer.o: StreamBuffer.cpp
 
 #### for test
 
-test_bufferRing : test_StreamBuffer.cpp StreamBuffer.o SLog.o
+test_bufferRing : StreamBuffer_Test.cpp StreamBuffer.o SLog.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm *.o main
+	rm *.o main test_*

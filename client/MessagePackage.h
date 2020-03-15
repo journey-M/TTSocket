@@ -1,5 +1,5 @@
-#ifndef  __MESSAGE_PACKAGE_H__
-#define  __MESSAGE_PACKAGE_H__
+#ifndef __MESSAGE_PACKAGE_H__
+#define __MESSAGE_PACKAGE_H__
 
 #include <string.h>
 #include "SLog.h"
@@ -11,7 +11,7 @@
  *   13~16     消息序列号  请求和响应的序列号要保持一致
  *   17~20     消息body长度     
  * 
- **/ 
+ **/
 
 struct Head
 {
@@ -23,21 +23,19 @@ struct Head
     unsigned int bodyLen;
 };
 
-
 class MessagePackage
 {
 private:
-    
-    char* TAG = (char*) "MessagePackage";
+    char *TAG = (char *)"MessagePackage";
 
     struct Head head;
 
     /* data */
-    char * body;
+    char *body;
 
-    char* buffer;
+    char *buffer;
 
-    void buildHeader();    
+    void buildHeader();
 
 public:
     MessagePackage(/* args */);
@@ -46,18 +44,21 @@ public:
 
     int package();
 
-    void unPackage();
-    
-    const void setBody(char *mbody);
+    void unPackage(struct Head *head, char *body);
 
-    char* getBuffer();
+    void setBody(char *mbody);
+
+    char *getBody();
+
+    Head *getHead();
+
+    char *getBuffer();
 
     virtual const int getClientVersion(){};
-    
+
     virtual const int getCmdId(){};
-    
 
+    static Head *checkPackageHead(char *origin);
 };
-
 
 #endif

@@ -12,6 +12,6 @@ void slog(char*clz ,char *err, int value);
 
 void slog(char*clz ,char *err, char* value);
 
-
+void slog(char*clz, char*value,const int from,const int to);
 
 #endif

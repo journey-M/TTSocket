@@ -42,12 +42,20 @@ bool StreamBuffer::writeEnd(char * data, int len){
     return true;
 }
 
-bool StreamBuffer::readHead( char*a , int len){
+bool StreamBuffer::popHead( char*a , int len){
     return readHead( a , len, true);
 }
 
 bool StreamBuffer::peekHead( char a[], int size){
     return readHead(a, size, false) ;
+}
+
+bool StreamBuffer::dropHead(int len){
+    if(len > this->size()){
+        return false;
+    } 
+    streamRing->head = (streamRing->head +len)% streamRing->size;
+    return true;
 }
 
 bool StreamBuffer::readHead( char*a , int len, bool move){

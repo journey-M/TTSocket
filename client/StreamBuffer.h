@@ -33,11 +33,13 @@ struct BufferRing{
     
      bool writeEnd(char * data, int size);
 
-     bool readHead( char a[], int size);
+     bool popHead( char a[], int size);
      
      bool readHead( char a[], int size, bool move);
 
      bool peekHead( char a[], int size);
+
+     bool dropHead(int size);
 
      int size();
 

@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "MessagePackage.h"
 #include "StreamBuffer.h"
+#include <vector>
 
 class MSocketWraper {
 
@@ -20,7 +21,7 @@ class MSocketWraper {
 
 		
 		void (*onClose)(const char*);
-		void (*onReceiveData)(const char[], int size);
+		void (*onMessage)(int cmdId, const char*, int size);
 
 
 	public:
@@ -57,7 +58,7 @@ class MSocketWraper {
 
 		void sendMessage(MessagePackage* msgPkg);
 
-		void trigleReceive();
+		std::vector<MessagePackage *>* trigleReceive();
 	
 };
 

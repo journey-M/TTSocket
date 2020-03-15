@@ -12,7 +12,9 @@ int main(int argc, char *argv[]){
 
 	ConnectionManager * manager = ConnectionManager::getInstance();
 
-	manager->createMSocket( MSOCKET, (char*) "luas.lianjia.com:9132");
+	//manager->createMSocket( MSOCKET, (char*) "luas.lianjia.com:9132");
+//	manager->createMSocket( MSOCKET, (char*) "luas-test-tcp.lianjia.com:8082");
+	manager->createMSocket( MSOCKET, (char*) "127.0.0.1:8080");
 
 
 	// manager->createMSocket( "seconde", (char*) "127.0.0.1:8080");

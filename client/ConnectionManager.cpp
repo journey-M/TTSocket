@@ -64,6 +64,9 @@ static void startReceiveThread(){
     }
 }
 
+/**
+ * 所有链接的接收消息都放到这里
+ **/
  static void *receiveingWork(void*){
 
     sleep(2);
